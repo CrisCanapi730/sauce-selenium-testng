@@ -9,6 +9,8 @@ public class LoginPage extends BasePage {
     private final By password = By.id("password");
     private final By loginButton = By.id("login-button");
     private final By errorMessage = By.cssSelector("[data-test='error']");
+    private final By menuButton = By.id("react-burger-menu-btn");
+    private final By logoutButton = By.cssSelector("a[id='about_sidebar_link']");
 
     public LoginPage(WebDriver driver){
         super(driver);
@@ -16,6 +18,8 @@ public class LoginPage extends BasePage {
     public void open(String url){
         goTo(url);
         waitForTitle("Swag Labs");
+        waitForUrl("https://www.saucedemo.com/");
+        urlContains("sauce");
     }
 
     public void login(String username, String password){
@@ -27,6 +31,13 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessage(){
         return getText(errorMessage);
+    }
+
+    public void clickMenuButton(){
+        click(menuButton);
+    }
+    public void clickLogoutButton(){
+        click(logoutButton);
     }
 
 }

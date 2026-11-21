@@ -46,5 +46,13 @@ public class BasePage {
         return el.getText();
     }
 
+    public void waitForUrl(String url){
+        wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    public void urlContains(String url){
+        wait.until(ExpectedConditions.urlContains(url));
+    }
+
 }
 

@@ -22,4 +22,14 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user", "incorrect");
         Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username and password do not match any user in this service");
     }
+
+    @Test
+    public void logout(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open("https://www.saucedemo.com/");
+        loginPage.login("standard_user", "secret_sauce");
+        Assert.assertEquals(loginPage.getUrl(), "https://www.saucedemo.com/inventory.html");
+        loginPage.clickMenuButton();
+        loginPage.clickLogoutButton();
+    }
 }
