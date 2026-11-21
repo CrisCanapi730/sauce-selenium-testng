@@ -37,5 +37,14 @@ public class BasePage {
         wait.until(ExpectedConditions.titleContains(title));
     }
 
+    public String getUrl(){
+        return driver.getCurrentUrl();
+    }
+
+    public String getText(By locator){
+        WebElement el = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return el.getText();
+    }
+
 }
 

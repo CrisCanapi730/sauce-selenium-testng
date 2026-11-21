@@ -8,7 +8,7 @@ public class LoginPage extends BasePage {
     private final By username = By.id("user-name");
     private final By password = By.id("password");
     private final By loginButton = By.id("login-button");
-    private final By errorMessage = By.id("");
+    private final By errorMessage = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver){
         super(driver);
@@ -23,6 +23,10 @@ public class LoginPage extends BasePage {
         type(this.password, password);
         click(loginButton);
         waitForTitleContains("Labs");
+    }
+
+    public String getErrorMessage(){
+        return getText(errorMessage);
     }
 
 }
