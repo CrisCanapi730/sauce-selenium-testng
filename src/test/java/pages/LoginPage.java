@@ -9,8 +9,7 @@ public class LoginPage extends BasePage {
     private final By password = By.id("password");
     private final By loginButton = By.id("login-button");
     private final By errorMessage = By.cssSelector("[data-test='error']");
-    private final By menuButton = By.id("react-burger-menu-btn");
-    private final By logoutButton = By.cssSelector("a[id='about_sidebar_link']");
+
 
     public LoginPage(WebDriver driver){
         super(driver);
@@ -33,11 +32,8 @@ public class LoginPage extends BasePage {
         return getText(errorMessage);
     }
 
-    public void clickMenuButton(){
-        click(menuButton);
-    }
-    public void clickLogoutButton(){
-        click(logoutButton);
+    public boolean isLoginFormDisplayed(){
+        return isDisplayed(username) && isDisplayed(password) && isDisplayed(loginButton);
     }
 
 }
